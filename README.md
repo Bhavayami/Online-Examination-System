@@ -1,105 +1,89 @@
-Online Examination System
+# Online Examination System
 
-A Java Swing-based Online Examination System that provides a timed multiple-choice exam with 10 questions. Users can navigate between questions, select and save answers, submit manually or automatically when time expires, and receive a detailed result.
+A **Java Swing-based Online Examination System** that provides a timed multiple-choice exam with **10 questions**. Users can navigate between questions, select and save answers, submit manually or automatically when time expires, and receive a result showing correct, wrong, unanswered answers, percentage, and pass/fail status.
 
-Overview
+## Overview
 
-The application presents 10 Java-related multiple-choice questions through a graphical user interface. Each question provides four possible answers, with only one option selectable at a time.
+The application presents **10 Java-related multiple-choice questions** through a graphical user interface. Each question provides **four possible answers**, with only one option selectable at a time.
 
-The examination is limited to 60 seconds. Users can navigate forward and backward while their selected answers are preserved. When the exam is submitted, the application evaluates the responses and presents the result.
+The examination is limited to **60 seconds**. Users can navigate forward and backward while their selected answers are preserved. When the exam is submitted, the application evaluates the responses and presents a detailed result through a dialog box.
 
-Main Functionality
-1. Question Handling
+## Main Functionality
 
-Contains 10 predefined multiple-choice questions.
+### Question Handling
 
-Each question has four answer options.
+- Contains **10 predefined multiple-choice questions**.
+- Each question has **four answer options**.
+- Questions are stored using an `ArrayList`.
+- The `Question` class stores:
+  - The question text
+  - Four answer options
+  - The correct answer
 
-Only one answer can be selected for each question.
+### Exam Navigation
 
-Questions are stored using an ArrayList.
+- The **Next** button moves to the following question.
+- The **Previous** button returns to the previous question.
+- The **Previous** button is disabled on the first question.
+- The **Next** button is disabled on the final question.
+- Previously selected answers are restored when navigating between questions.
 
-The Question class stores:
+### Answer Selection
 
-Question text
+The application uses four `JRadioButton` components grouped with a `ButtonGroup`.
 
-Four answer options
+This ensures that **only one answer can be selected at a time** for each question.
 
-Correct answer
+### Time Control
 
-2. Exam Navigation
+A **Swing Timer** controls the examination duration.
 
-Next button moves to the following question.
+- **Starting time:** 60 seconds
+- The timer updates every second.
+- The remaining time is displayed at the top of the window.
+- When the timer reaches zero, the exam is **automatically submitted**.
 
-Previous button returns to the previous question.
+### Result Processing
 
-The Previous button is disabled on the first question.
-
-The Next button is disabled on the final question.
-
-Previously selected answers are restored when navigating between questions.
-
-3. Answer Selection
-
-The application uses four JRadioButton components grouped with a ButtonGroup.
-
-This ensures that only one answer can be selected at a time for each question.
-
-4. Time Control
-
-A Swing Timer controls the examination duration.
-
-Starting time: 60 seconds
-
-Timer updates every second.
-
-Remaining time is displayed at the top of the window.
-
-When the timer reaches zero, the exam is automatically submitted.
-
-5. Result Processing
-
-After submission, the system checks the user's selected answers against the correct answers stored in each Question object.
+After submission, the system checks the user's selected answers against the correct answers stored in each `Question` object.
 
 The result includes:
 
-Total number of questions
+- **Total number of questions**
+- **Number of correct answers**
+- **Number of wrong answers**
+- **Number of unanswered questions**
+- **Percentage obtained**
+- **Pass/Fail result**
 
-Number of correct answers
+The passing condition implemented in the program is **40% or above**.
 
-Number of wrong answers
+## User Interface
 
-Number of unanswered questions
+The graphical interface is created using **Java Swing components**, including:
 
-Percentage obtained
+| Component | Role |
+|---|---|
+| `JFrame` | Main examination window |
+| `JLabel` | Displays the question and remaining time |
+| `JRadioButton` | Provides answer choices |
+| `ButtonGroup` | Allows one answer to be selected |
+| `JButton` | Handles Previous, Next, and Submit actions |
+| `JPanel` | Organizes the interface |
+| `JOptionPane` | Displays warnings, confirmation, and final results |
 
-Pass/Fail result
+## Project Structure
 
-The passing condition implemented in the program is 40% or above.
-
-User Interface
-
-The graphical interface is created using Java Swing components.
-
-Component	Role
-JFrame	Main examination window
-JLabel	Displays the question and remaining time
-JRadioButton	Provides answer choices
-ButtonGroup	Allows one answer to be selected
-JButton	Handles Previous, Next, and Submit actions
-JPanel	Organizes the interface
-JOptionPane	Displays warnings, confirmation, and final results
-Project Structure
+```text
 Online Examination System
 │
 ├── OnlineExam.java
 └── Question.java
 
 OnlineExam.java
-
 Contains the main application logic, including:
 
-Graphical user interface
+The graphical interface
 
 Question navigation
 
@@ -112,32 +96,27 @@ Submission process
 Result calculation
 
 Question.java
-
 Defines the Question class and stores:
 
-Question statement
+The question statement
 
 Four answer choices
 
-Correct answer
+The correct answer
 
 Getter methods are provided to retrieve these values.
 
 Running the Application
-
 Make sure Java is installed on your system.
 
-1. Compile the source files
-
+Step 1: Compile the Source Files
 Open a terminal in the project directory and run:
-
 javac Question.java OnlineExam.java
 
-2. Start the application
+Step 2: Start the Application
 java OnlineExam
 
-
-The program will launch the examination window through the main() method.
+The program launches the examination window through the main() method.
 
 Examination Flow
 Start Application
@@ -166,9 +145,7 @@ Calculate Percentage
        │
        ▼
 Display Final Result
-
 Concepts Demonstrated
-
 This project provides practical implementation of several Java programming concepts:
 
 Object-Oriented Programming
@@ -198,7 +175,6 @@ Loops for Result Calculation
 Dialog Boxes using JOptionPane
 
 Project Objective
-
 The project demonstrates how core Java programming concepts can be combined to create a functional desktop-based examination application.
 
 It focuses on:
@@ -213,4 +189,4 @@ Timer-based execution
 
 Automated evaluation
 
-All these concepts are implemented together in a simple Online Examination System.
+The project provides a simple and interactive way for users to answer multiple-choice questions, navigate through the examination, and receive their results automatically after submission or when the examination time expires.
