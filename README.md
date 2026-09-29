@@ -15,12 +15,14 @@ Contains 10 predefined multiple-choice questions.
 Each question has four answer options.
 Questions are stored using an ArrayList<Question>.
 The Question class stores the question text, four options, and the correct answer.
+
 Exam Navigation
 Next button moves to the following question.
 Previous button returns to the previous question.
 The Previous button is disabled on the first question.
 The Next button is disabled on the final question.
 Previously selected answers are restored when navigating between questions.
+
 Answer Selection
 
 The application uses four JRadioButton components grouped with a ButtonGroup. This ensures that only one answer can be selected for each question.
@@ -33,6 +35,7 @@ Starting time: 60 seconds
 Timer updates every second.
 The remaining time is displayed at the top of the window.
 When the timer reaches zero, the exam is automatically submitted.
+
 Result Processing
 
 After submission, the system checks the user's selected answers against the correct answers stored in each Question object.
@@ -51,15 +54,16 @@ The passing condition implemented in the program is 40% or above.
 User Interface
 
 The graphical interface is created using Java Swing components, including:
+| Component      | Role                                               |
+| -------------- | -------------------------------------------------- |
+| `JFrame`       | Main examination window                            |
+| `JLabel`       | Displays the question and remaining time           |
+| `JRadioButton` | Provides answer choices                            |
+| `ButtonGroup`  | Allows one answer to be selected                   |
+| `JButton`      | Handles Previous, Next, and Submit actions         |
+| `JPanel`       | Organizes the interface                            |
+| `JOptionPane`  | Displays warnings, confirmation, and final results |
 
-Component	Role
-JFrame	Main examination window
-JLabel	Displays the question and remaining time
-JRadioButton	Provides answer choices
-ButtonGroup	Allows one answer to be selected
-JButton	Handles Previous, Next, and Submit actions
-JPanel	Organizes the interface
-JOptionPane	Displays warnings, confirmation, and final results
 Project Structure
 Online Examination System
 │
@@ -76,13 +80,9 @@ Defines the Question class and stores the question statement, four answer choice
 Running the Application
 
 Make sure Java is installed on your system, then compile both source files from the project directory:
-
 javac Question.java OnlineExam.java
-
 Start the application using:
-
 java OnlineExam
-
 The program launches the examination window through the main() method.
 
 Examination Flow
